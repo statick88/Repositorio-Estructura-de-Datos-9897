@@ -45,3 +45,63 @@ lista2 = ["a", "b", "B", "c"]
 lista2.sort()
 print(lista2)
 
+tupla = ("Quito", "Guayaquil", "Cuenca", "Quito")
+# tupla2 = set(tupla)
+# print(tupla2)
+
+print(type(tupla))
+
+# tupla.append("Machala")
+# print(tupla)
+
+print(tupla.count("Quito"))
+print(tupla.index("Cuenca"))
+# print(tupla.index("Quito"))
+
+lista = list(tupla)
+print(lista)
+print(tupla)
+
+lista.append("Machala")
+tupla = tuple(lista)
+
+print(lista)
+print(tupla)
+
+# Range
+
+rango = range(5, 10, 2)
+print(type(rango))
+print(rango)
+
+# Sets
+
+conjunto = {"i", "o", "a", "e", "u", "u", "u", "u", "u", "u", "u"}
+print(type(conjunto))
+print(conjunto)
+
+# Diccionarios
+
+cliente001 = {
+    "nombre": "Diego", 
+    "apellido":"Saavedra", 
+    "telefono":"0986217216", 
+    "correo":"dmsaavedra@espe.edu.ec"
+    }
+print(type(cliente001))
+print(cliente001["nombre"])
+print(cliente001["correo"])
+
+print(cliente001.get("telefono"))
+cliente001["nombre"] = "Juan"
+print(cliente001)
+print(len(cliente001))
+
+cliente001.popitem()
+print(cliente001)
+
+cliente001.pop("apellido")
+print(cliente001)
+
+del cliente001["telefono"]
+print(cliente001)
