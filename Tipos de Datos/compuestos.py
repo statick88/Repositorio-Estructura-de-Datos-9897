@@ -105,3 +105,27 @@ print(cliente001)
 
 del cliente001["telefono"]
 print(cliente001)
+
+perros = {
+    "Tobby":{
+    "name": "Tobby",
+    "age": 6
+    },
+    "Leo":{
+    "name": "Leo",
+    "age": 1
+    }
+}
+print(perros)
+
+perritos = dict(name="Rocky", age=7)
+print(perritos)
+
+perros["Rokcky"] = perritos
+print(perros)
+
+# Bolean
+
+mayorEdad = True
+open = False
+
