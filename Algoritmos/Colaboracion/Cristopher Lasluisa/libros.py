@@ -1,10 +1,10 @@
 class Libro:
-    def __init__(self, titulo, autor):
-        self.titulo = titulo
-        self.autor = autor
+    def __init__(self, nombre, anio):
+        self.nombre = nombre
+        self.anio = anio
 
     def __str__(self):
-        return f"{self.titulo} - {self.autor}"
+        return f"{self.nombre} ({self.anio})"
 
 
 def mostrar_libros(libros):
@@ -18,42 +18,42 @@ def mostrar_libros(libros):
 
 def eliminar_libro(libros):
     if libros:
-        titulo = input("Ingrese el título del libro a eliminar: ")
-        libros_filtrados = [libro for libro in libros if libro.titulo != titulo]
+        nombre = input("Ingrese el nombre del libro a eliminar: ")
+        libros_filtrados = [libro for libro in libros if libro.nombre != nombre]
         if len(libros_filtrados) < len(libros):
             libros[:] = libros_filtrados
             print("Libro eliminado exitosamente.")
         else:
-            print("No se encontró un libro con ese título.")
+            print("No se encontró un libro con ese nombre.")
     else:
         print("No se han ingresado libros.")
 
 
 def modificar_libro(libros):
     if libros:
-        titulo = input("Ingrese el título del libro a modificar: ")
+        nombre = input("Ingrese el nombre del libro a modificar: ")
         for libro in libros:
-            if libro.titulo == titulo:
-                nuevo_titulo = input("Ingrese el nuevo título del libro: ")
-                nuevo_autor = input("Ingrese el nuevo autor del libro: ")
-                libro.titulo = nuevo_titulo
-                libro.autor = nuevo_autor
+            if libro.nombre == nombre:
+                nuevo_nombre = input("Ingrese el nuevo nombre del libro: ")
+                nuevo_anio = int(input("Ingrese el nuevo año del libro: "))
+                libro.nombre = nuevo_nombre
+                libro.anio = nuevo_anio
                 print("Libro modificado exitosamente.")
                 return
-        print("No se encontró un libro con ese título.")
+        print("No se encontró un libro con ese nombre.")
     else:
         print("No se han ingresado libros.")
 
 
 def ordenar_libros(libros, criterio):
     if libros:
-        if criterio == "titulo":
+        if criterio == "nombre":
             algoritmo = input("Ingrese el algoritmo de ordenamiento a utilizar (burbuja, shell, quick): ")
             if algoritmo == "burbuja":
-                libros.sort(key=lambda libro: libro.titulo)
+                libros.sort(key=lambda libro: libro.nombre)
             elif algoritmo == "shell":
-                # Implementar el algoritmo de ordenamiento ShellSort por título
-                def shell_sort_titulo(libros):
+                # Implementar el algoritmo de ordenamiento ShellSort por nombre
+                def shell_sort_nombre(libros):
                     n = len(libros)
                     gap = n // 2
 
@@ -62,7 +62,7 @@ def ordenar_libros(libros, criterio):
                             temp = libros[i]
                             j = i
 
-                            while j >= gap and libros[j - gap].titulo > temp.titulo:
+                            while j >= gap and libros[j - gap].nombre > temp.nombre:
                                 libros[j] = libros[j - gap]
                                 j -= gap
 
@@ -70,37 +70,37 @@ def ordenar_libros(libros, criterio):
 
                         gap //= 2
 
-                shell_sort_titulo(libros)
+                shell_sort_nombre(libros)
             elif algoritmo == "quick":
-                # Implementar el algoritmo de ordenamiento Quicksort por título
-                def partition_titulo(libros, low, high):
-                    pivot = libros[high].titulo
+                # Implementar el algoritmo de ordenamiento Quicksort por nombre
+                def partition_nombre(libros, low, high):
+                    pivot = libros[high].nombre
                     i = low - 1
 
                     for j in range(low, high):
-                        if libros[j].titulo < pivot:
+                        if libros[j].nombre < pivot:
                             i += 1
                             libros[i], libros[j] = libros[j], libros[i]
 
                     libros[i + 1], libros[high] = libros[high], libros[i + 1]
                     return i + 1
 
-                def quick_sort_titulo(libros, low, high):
+                def quick_sort_nombre(libros, low, high):
                     if low < high:
-                        pivot_index = partition_titulo(libros, low, high)
-                        quick_sort_titulo(libros, low, pivot_index - 1)
-                        quick_sort_titulo(libros, pivot_index + 1, high)
+                        pivot_index = partition_nombre(libros, low, high)
+                        quick_sort_nombre(libros, low, pivot_index - 1)
+                        quick_sort_nombre(libros, pivot_index + 1, high)
 
-                quick_sort_titulo(libros, 0, len(libros) - 1)
+                quick_sort_nombre(libros, 0, len(libros) - 1)
             else:
                 print("Algoritmo de ordenamiento inválido.")
-        elif criterio == "autor":
+        elif criterio == "anio":
             algoritmo = input("Ingrese el algoritmo de ordenamiento a utilizar (burbuja, shell, quick): ")
             if algoritmo == "burbuja":
-                libros.sort(key=lambda libro: libro.autor)
+                libros.sort(key=lambda libro: libro.anio)
             elif algoritmo == "shell":
-                # Implementar el algoritmo de ordenamiento ShellSort por autor
-                def shell_sort_autor(libros):
+                # Implementar el algoritmo de ordenamiento ShellSort por año
+                def shell_sort_anio(libros):
                     n = len(libros)
                     gap = n // 2
 
@@ -109,7 +109,7 @@ def ordenar_libros(libros, criterio):
                             temp = libros[i]
                             j = i
 
-                            while j >= gap and libros[j - gap].autor > temp.autor:
+                            while j >= gap and libros[j - gap].anio > temp.anio:
                                 libros[j] = libros[j - gap]
                                 j -= gap
 
@@ -117,28 +117,28 @@ def ordenar_libros(libros, criterio):
 
                         gap //= 2
 
-                shell_sort_autor(libros)
+                shell_sort_anio(libros)
             elif algoritmo == "quick":
-                # Implementar el algoritmo de ordenamiento Quicksort por autor
-                def partition_autor(libros, low, high):
-                    pivot = libros[high].autor
+                # Implementar el algoritmo de ordenamiento Quicksort por año
+                def partition_anio(libros, low, high):
+                    pivot = libros[high].anio
                     i = low - 1
 
                     for j in range(low, high):
-                        if libros[j].autor < pivot:
+                        if libros[j].anio < pivot:
                             i += 1
                             libros[i], libros[j] = libros[j], libros[i]
 
                     libros[i + 1], libros[high] = libros[high], libros[i + 1]
                     return i + 1
 
-                def quick_sort_autor(libros, low, high):
+                def quick_sort_anio(libros, low, high):
                     if low < high:
-                        pivot_index = partition_autor(libros, low, high)
-                        quick_sort_autor(libros, low, pivot_index - 1)
-                        quick_sort_autor(libros, pivot_index + 1, high)
+                        pivot_index = partition_anio(libros, low, high)
+                        quick_sort_anio(libros, low, pivot_index - 1)
+                        quick_sort_anio(libros, pivot_index + 1, high)
 
-                quick_sort_autor(libros, 0, len(libros) - 1)
+                quick_sort_anio(libros, 0, len(libros) - 1)
             else:
                 print("Algoritmo de ordenamiento inválido.")
         else:
@@ -156,16 +156,16 @@ def menu():
         print("2. Mostrar libros")
         print("3. Eliminar libro")
         print("4. Modificar libro")
-        print("5. Ordenar libros por título")
-        print("6. Ordenar libros por autor")
+        print("5. Ordenar libros por nombre")
+        print("6. Ordenar libros por año")
         print("0. Salir")
 
         opcion = input("Ingrese una opción: ")
 
         if opcion == "1":
-            titulo = input("Ingrese el título del libro: ")
-            autor = input("Ingrese el autor del libro: ")
-            libro = Libro(titulo, autor)
+            nombre = input("Ingrese el nombre del libro: ")
+            anio = int(input("Ingrese el año del libro: "))
+            libro = Libro(nombre, anio)
             libros.append(libro)
             print("Libro ingresado exitosamente.")
         elif opcion == "2":
@@ -175,9 +175,9 @@ def menu():
         elif opcion == "4":
             modificar_libro(libros)
         elif opcion == "5":
-            ordenar_libros(libros, "titulo")
+            ordenar_libros(libros, "nombre")
         elif opcion == "6":
-            ordenar_libros(libros, "autor")
+            ordenar_libros(libros, "anio")
         elif opcion == "0":
             print("¡Hasta luego!")
             break
@@ -186,3 +186,4 @@ def menu():
 
 
 menu()
+
