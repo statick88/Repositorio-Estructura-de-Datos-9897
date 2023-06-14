@@ -2,7 +2,7 @@ class Pelicula:
     def __init__(self, nombre, anio):
         self.nombre = nombre
         self.anio = anio
-    
+
     def __str__(self):
         return f"{self.nombre} ({self.anio})"
 
@@ -19,10 +19,16 @@ def mostrar_peliculas(peliculas):
 def eliminar_pelicula(peliculas):
     if peliculas:
         nombre = input("Ingrese el nombre de la película a eliminar: ")
-        peliculas = [pelicula for pelicula in peliculas if pelicula.nombre != nombre]
-        print("Película eliminada exitosamente.")
+        peliculas_filtradas = [pelicula for pelicula in peliculas if pelicula.nombre != nombre]
+        if len(peliculas_filtradas) < len(peliculas):
+            peliculas[:] = peliculas_filtradas
+            print("Película eliminada exitosamente.")
+        else:
+            print("No se encontró una película con ese nombre.")
     else:
         print("No se han ingresado películas.")
+
+
 
 def modificar_pelicula(peliculas):
     if peliculas:
@@ -38,6 +44,7 @@ def modificar_pelicula(peliculas):
         print("No se encontró una película con ese nombre.")
     else:
         print("No se han ingresado películas.")
+
 
 def ordenar_peliculas(peliculas, criterio):
     if peliculas:
@@ -64,6 +71,7 @@ def ordenar_peliculas(peliculas, criterio):
 
                         gap //= 2
 
+                shell_sort_nombre(peliculas)
             elif algoritmo == "quick":
                 # Implementar el algoritmo de ordenamiento Quicksort por nombre
                 def partition_nombre(peliculas, low, high):
@@ -78,16 +86,13 @@ def ordenar_peliculas(peliculas, criterio):
                     peliculas[i + 1], peliculas[high] = peliculas[high], peliculas[i + 1]
                     return i + 1
 
-
                 def quick_sort_nombre(peliculas, low, high):
                     if low < high:
                         pivot_index = partition_nombre(peliculas, low, high)
                         quick_sort_nombre(peliculas, low, pivot_index - 1)
                         quick_sort_nombre(peliculas, pivot_index + 1, high)
 
-
-                def quicksort_por_nombre(peliculas):
-                    quick_sort_nombre(peliculas, 0, len(peliculas) - 1)
+                quick_sort_nombre(peliculas, 0, len(peliculas) - 1)
             else:
                 print("Algoritmo de ordenamiento inválido.")
         elif criterio == "anio":
@@ -113,6 +118,7 @@ def ordenar_peliculas(peliculas, criterio):
 
                         gap //= 2
 
+                shell_sort_anio(peliculas)
             elif algoritmo == "quick":
                 # Implementar el algoritmo de ordenamiento Quicksort por año
                 def partition_anio(peliculas, low, high):
@@ -127,16 +133,13 @@ def ordenar_peliculas(peliculas, criterio):
                     peliculas[i + 1], peliculas[high] = peliculas[high], peliculas[i + 1]
                     return i + 1
 
-
                 def quick_sort_anio(peliculas, low, high):
                     if low < high:
                         pivot_index = partition_anio(peliculas, low, high)
                         quick_sort_anio(peliculas, low, pivot_index - 1)
                         quick_sort_anio(peliculas, pivot_index + 1, high)
 
-
-                def quicksort_por_anio(peliculas):
-                    quick_sort_anio(peliculas, 0, len(peliculas) - 1)
+                quick_sort_anio(peliculas, 0, len(peliculas) - 1)
             else:
                 print("Algoritmo de ordenamiento inválido.")
         else:
@@ -181,5 +184,6 @@ def menu():
             break
         else:
             print("Opción inválida. Por favor, ingrese una opción válida.")
+
 
 menu()
