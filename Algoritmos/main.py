@@ -160,27 +160,26 @@ def menu():
 
         opcion = input("Ingrese una opción: ")
 
-    if opcion == "1":
-        nombre = input("Ingrese el nombre de la película: ")
-        anio = int(input("Ingrese el año de la película: "))
-        pelicula = Pelicula(nombre, anio)
-        peliculas.append(pelicula)
-        print("Película ingresada exitosamente.")
-    elif opcion == "2":
-            #mostrar_peliculas(peliculas)
-        print(peliculas)
-    elif opcion == "3":
-        eliminar_pelicula(peliculas)
-    elif opcion == "4":
-        modificar_pelicula(peliculas)
-    elif opcion == "5":
-        ordenar_peliculas(peliculas, "nombre")
-    elif opcion == "6":
-        ordenar_peliculas(peliculas, "anio")
-    elif opcion == "0":
-        print("¡Hasta luego!")
-        break
-    else:
-        print("Opción inválida. Por favor, ingrese una opción válida.")
+        if opcion == "1":
+            nombre = input("Ingrese el nombre de la película: ")
+            anio = int(input("Ingrese el año de la película: "))
+            pelicula = Pelicula(nombre, anio)
+            peliculas.append(pelicula)
+            print("Película ingresada exitosamente.")
+        elif opcion == "2":
+            mostrar_peliculas(peliculas)
+        elif opcion == "3":
+            eliminar_pelicula(peliculas)
+        elif opcion == "4":
+            modificar_pelicula(peliculas)
+        elif opcion == "5":
+            ordenar_peliculas(peliculas, "nombre")
+        elif opcion == "6":
+            ordenar_peliculas(peliculas, "anio")
+        elif opcion == "0":
+            print("¡Hasta luego!")
+            break
+        else:
+            print("Opción inválida. Por favor, ingrese una opción válida.")
 
 menu()
