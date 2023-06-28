@@ -5,7 +5,7 @@
 Código en R:
 
 ```{R}
-**Crear un grafo vacío**
+#Crear un grafo vacío
 grafo <- graph()
 ```
 **Insertar un vértice con identificador "A"**
@@ -27,7 +27,7 @@ grafo <- delete.vertices(grafo, "A")
 
 Código en R:
 
-```R
+```{R}
 # Crear un grafo vacío
 grafo <- graph()
 
@@ -48,14 +48,32 @@ grafo <- delete.edges(grafo, c("A", "B"))
 En base a los ejemplos anteriores, por favor desarrolla estos ejercicios:
 
 1. Crea un grafo vacío.
+```{r}
+library(igraph)
+
+grafo <- graph.empty()
+```
 2. Inserta los vértices A, B, C y D en el grafo.
+```{r}
+vertices <- c("A", "B", "C", "D")
+grafo <- add.vertices(grafo, vertices)
+```
 3. Elimina el vértice C del grafo.
+```{r}
+grafo <- delete.vertices(grafo, "C")
+```
 4. Inserta una arista entre los vértices A y B.
+```{r}
+grafo <- add.edges(grafo, c("A", "B"))
+```
 5. Elimina la arista entre los vértices A y B.
+```{r}
+grafo <- delete.edges(grafo, c("A", "B"))
+```
 6. Inserta aristas entre todos los pares de vértices en el grafo.
 7. Elimina todas las aristas del grafo.
 8. Inserta los vértices 1, 2, 3 y 4 en el grafo.
-9. Inserta una arista entre los vértices 1 y 2.
+9.  Inserta una arista entre los vértices 1 y 2.
 10. Inserta una arista entre los vértices 2 y 3.
 11. Inserta una arista entre los vértices 3 y 4.
 12. Elimina el vértice 3 del grafo.
